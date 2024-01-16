@@ -1,0 +1,23 @@
+/* Parámetros del Generador Lineal Congruencial */
+a = 106
+c = 1283
+m = 6075
+
+/* Semilla inicial */
+seed = 42
+
+/* Número de valores a generar */
+num_values = 10
+
+call generate_lcg seed, num_values
+
+exit
+
+generate_lcg: procedure expose a c m
+  parse arg seed, num_values
+  do i = 1 to num_values
+    random_value = (a * seed + c) / m
+    say 'Valor aleatorio:' random_value
+    seed = random_value
+  end
+  return
